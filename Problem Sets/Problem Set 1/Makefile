@@ -34,7 +34,9 @@ CUDA_INCLUDEPATH=/usr/local/cuda-5.0/include
 NVCC_OPTS=-O3 -arch=sm_20 -Xcompiler -Wall -Xcompiler -Wextra -m64
 
 GCC_OPTS=-O3 -Wall -Wextra -m64
-
+## : 後面代表dependency 遇到沒有的會下去找有沒有一樣的編譯定義
+## 並且去執行它
+## 最後在執行最下面的command line
 student: main.o student_func.o compare.o reference_calc.o Makefile
 	$(NVCC) -o HW1 main.o student_func.o compare.o reference_calc.o -L $(OPENCV_LIBPATH) $(OPENCV_LIBS) $(NVCC_OPTS)
 
